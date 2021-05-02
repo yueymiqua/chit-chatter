@@ -10,15 +10,16 @@ export default class Start extends Component {
     return (
       <HeaderContext.Consumer>{(headerCtx) => {
         const { changeText } = headerCtx;
+        return (
         <ImageBackground source={image} style={styles.background}>
           <View style={styles.container}>
               <TextInput
                 style={styles.textBox}
-                onChangeText={(text) => changeText(text)}
-                value={this.state.text}
+                onChangeText={this.props.changeText}
+                value={this.props.text}
                 placeholder='Type here...'
               />
-              <Text>You wrote: {this.state.text}</Text>
+              <Text>You wrote: {this.props.text}</Text>
               <Button title="Go to Chat" onPress={() => this.props.navigation.navigate('Chat')}/>
               <View style={styles.colorContainer}>
                 <Text style={styles.colorPallette}>
@@ -45,6 +46,7 @@ export default class Start extends Component {
               </View>
           </View>
         </ImageBackground>
+        )
       }}
       </HeaderContext.Consumer>
     )

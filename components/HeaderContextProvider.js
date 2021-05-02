@@ -10,11 +10,13 @@ class HeaderContextProvider extends Component {
     color: '',
   }
 
-  changeText = (text) => this.setState({text});
+  changeText(text) {
+   this.setState({text})
+  }
 
   render() {
     return (
-      <HeaderContext.Provider value={{...this.state, changeText}}>
+      <HeaderContext.Provider value={{state: this.state, function1: this.changeText}}>
         { this.props.children }
       </HeaderContext.Provider>
     )
