@@ -1,24 +1,20 @@
-import React, { createContext, Component } from 'react';
+import React, { Component } from 'react';
 import { View, Text, TextInput, Button, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { HeaderContext } from './HeaderContextProvider';
 
 const image = require('../assets/Background_Image.png');
 
-export const HeaderContext = createContext();
-
 export default class Start extends Component {
-  state = {
-    text: '',
-    color: '',
-  }
 
   render() {
     return (
-      <HeaderContext.Provider value={{...this.state}}>
+      <HeaderContext.Consumer>{(headerCtx) => {
+        const { changeText } = headerCtx;
         <ImageBackground source={image} style={styles.background}>
           <View style={styles.container}>
               <TextInput
                 style={styles.textBox}
-                onChangeText={(text) => this.setState({text})}
+                onChangeText={(text) => changeText(text)}
                 value={this.state.text}
                 placeholder='Type here...'
               />
@@ -49,7 +45,8 @@ export default class Start extends Component {
               </View>
           </View>
         </ImageBackground>
-      </HeaderContext.Provider>
+      }}
+      </HeaderContext.Consumer>
     )
   }
 }
