@@ -2,18 +2,20 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { HeaderContext } from './HeaderContextProvider';
 
-export default class Chat extends React.Component {
+export class Chat extends React.Component{
+
   constructor(props){
     super(props);
   }
-  render() {
+
+  render(){
     return (
       <HeaderContext.Consumer>{(headerCtx) => {
-        const { text, color } = headerCtx;
+        const { text, color } = headerCtx.state;
+        console.log({text})
         this.props.navigation.setOptions({ title: text });
-        console.log(text);
         return (
-          <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: {color}}}>
+          <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
             <Text>Hello Chat!</Text>
           </View>
         )
@@ -22,3 +24,4 @@ export default class Chat extends React.Component {
     )
   }
 }
+export default Chat;

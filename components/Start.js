@@ -15,7 +15,7 @@ export default class Start extends Component {
           <View style={styles.container}>
               <TextInput
                 style={styles.textBox}
-                onChangeText={this.props.changeText}
+                onChangeText={changeText}
                 value={this.props.text}
                 placeholder='Type here...'
               />
@@ -28,19 +28,19 @@ export default class Start extends Component {
                 <View style={styles.colorChoice}>
                   <TouchableOpacity 
                     style={styles.colorOne}
-                    onPress = {() => this.setState({color: '#090C08'})}
+                    // onPress = {changeColor({color: '#090C08'})}
                   />
                   <TouchableOpacity 
                     style={styles.colorTwo}
-                    onPress = {() => this.setState({color: '#474056'})}
+                    // onPress = {changeColor({color: '#474056'})}
                     />
                   <TouchableOpacity 
                     style={styles.colorThree} 
-                    onPress = {() => this.setState({color: '#8A95A5'})}
+                    // onPress = {changeColor({color: '#8A95A5'})}
                   />
                   <TouchableOpacity 
                     style={styles.colorFour} 
-                    onPress = {() => this.setState({color: '#B9C6AE'})}
+                    // onPress = {changeColor({color: '#B9C6AE'})}
                   />
                 </View>
               </View>
