@@ -9,7 +9,7 @@ export default class Start extends Component {
   render() {
     return (
       <HeaderContext.Consumer>{(headerCtx) => {
-        const { changeText } = headerCtx;
+        const { changeText, changeColor } = headerCtx;
         return (
         <ImageBackground source={image} style={styles.background}>
           <View style={styles.container}>
@@ -28,19 +28,19 @@ export default class Start extends Component {
                 <View style={styles.colorChoice}>
                   <TouchableOpacity 
                     style={styles.colorOne}
-                    // onPress = {changeColor({color: '#090C08'})}
+                    onPress = {() => changeColor('#caf7e3')}
                   />
                   <TouchableOpacity 
                     style={styles.colorTwo}
-                    // onPress = {changeColor({color: '#474056'})}
+                    onPress = {() => changeColor('#edffec')}
                     />
                   <TouchableOpacity 
                     style={styles.colorThree} 
-                    // onPress = {changeColor({color: '#8A95A5'})}
+                    onPress = {() => changeColor('#f6dfeb')}
                   />
                   <TouchableOpacity 
                     style={styles.colorFour} 
-                    // onPress = {changeColor({color: '#B9C6AE'})}
+                    onPress = {() => changeColor('#e4bad4')}
                   />
                 </View>
               </View>
@@ -90,14 +90,14 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   colorOne: {
-    backgroundColor: '#090c08',width: 50,
+    backgroundColor: '#caf7e3',width: 50,
     width: 50,
     height: 50,
     borderRadius: 25, 
     margin: 10
   },
   colorTwo: {
-    backgroundColor: '#474056',
+    backgroundColor: '#edffec',
     width: 50,
     height: 50,
     borderRadius: 25, 
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   colorFour: {
-    backgroundColor: '#B9C6AE',
+    backgroundColor: '#e4bad4',
     width: 50,
     height: 50,
     borderRadius: 25, 

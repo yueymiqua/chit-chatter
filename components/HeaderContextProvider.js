@@ -12,26 +12,25 @@ class HeaderContextProvider extends Component {
     color: '',
     }
     this.changeText = this.changeText.bind(this);
-    // this.changeColor = this.changeColor.bind(this);
+    this.changeColor = this.changeColor.bind(this);
   }
 
   changeText(text) {
    this.setState({text})
   }
 
-  // changeColor(color) {
-  //   this.setState({color})
-  // }
+  changeColor(color) {
+    this.setState({color})
+  }
 
   render() {
     return (
-      <HeaderContext.Provider value={{state: this.state, changeText: this.changeText}}>
+      <HeaderContext.Provider value={{state: this.state, changeText: this.changeText, changeColor: this.changeColor}}>
         { this.props.children }
       </HeaderContext.Provider>
     )
   }
 }
 
-// , changeColor: this.changeColor
 
 export default HeaderContextProvider;
