@@ -36,7 +36,7 @@ export default class Start extends Component {
                     />
                   <TouchableOpacity 
                     style={styles.colorThree} 
-                    onPress = {() => changeColor('#f6dfeb')}
+                    onPress = {() => changeColor('#8A95A5')}
                   />
                   <TouchableOpacity 
                     style={styles.colorFour} 
