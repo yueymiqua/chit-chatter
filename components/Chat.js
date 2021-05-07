@@ -16,7 +16,7 @@ export class Chat extends React.Component{
         this.props.navigation.setOptions({ title: text });
         
         return (
-          <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: {color}}}>
+          <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#caf7e3'}}>
             <Text>Hello Chat!</Text>
           </View>
         )
