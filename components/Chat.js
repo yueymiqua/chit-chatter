@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Platform, KeyboardAvoidingView } from 'react-native';
+import { View, Text, Platform, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { HeaderContext } from './HeaderContextProvider';
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble, Day, SystemMessage } from 'react-native-gifted-chat';
 
 function Chat(props) {
 
@@ -49,8 +49,24 @@ function Chat(props) {
           color: '#fff',
         }
       }}
+      timeTextStyle={{
+        right: {
+          color: "#fff",
+        },
+        left: {
+          color: '#fff',
+        },
+      }}
       />
     )
+  }
+
+  const renderDay = (props) => {
+    return <Day {...props} textStyle={{color: '#000'}}/>
+  }
+
+  const renderSystemMessage = (props) => {
+    return <SystemMessage {...props} textStyle={{color: '#000'}}/>
   }
 
   return (
@@ -68,13 +84,15 @@ function Chat(props) {
             user={{
               _id:1,
             }}
+            renderDay={(props) => renderDay(props)}
+            renderSystemMessage={(props) => renderSystemMessage(props)}
           />
+          
           { Platform.OS === 'android' ? 
             <KeyboardAvoidingView behavior="height" /> : 
             null
           }
         </View>
-
       )
     }}    
     </HeaderContext.Consumer>

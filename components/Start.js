@@ -17,7 +17,7 @@ export default class Start extends Component {
                 style={styles.textBox}
                 onChangeText={changeText}
                 value={this.props.text}
-                placeholder='Type here...'
+                placeholder='Your name here'
               />
               <Text>You wrote: {this.props.text}</Text>
               <Button title="Go to Chat" onPress={() => this.props.navigation.navigate('Chat')}/>
