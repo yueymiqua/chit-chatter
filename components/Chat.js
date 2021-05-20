@@ -31,23 +31,23 @@ function Chat(props) {
       props.navigation.setOptions({title: text});
       
       return (
-        <GiftedChat
-          messages={messages}
-          onSend={(messages) => onSend(messages)}
-          user={{
-            _id:1,
-          }}
-        />
+        <View style={{flex:1, backgroundColor: chatBackgroundColor}}>
+          <GiftedChat
+            messages={messages}
+            onSend={(messages) => onSend(messages)}
+            user={{
+              _id:1,
+            }}
+          />
+          { Platform.OS === 'android' ? 
+            <KeyboardAvoidingView behavior="height" /> : 
+            null
+          }
+        </View>
+
       )
     }}    
     </HeaderContext.Consumer>
   )
 }
 export default Chat;
-
-
-
-
-// <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: chatBackgroundColor}}>
-//   <Text>Hello Chat!</Text>
-// </View>
