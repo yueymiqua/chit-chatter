@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, Platform, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { HeaderContext } from './HeaderContextProvider';
 import { GiftedChat, Bubble, Day, SystemMessage } from 'react-native-gifted-chat';
 
-function Chat(props) {
+const Chat = ({navigation}) => {
 
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    navigation.setOptions({title: text});
     setMessages([
       {
         _id: 1,
@@ -69,33 +70,26 @@ function Chat(props) {
     return <SystemMessage {...props} textStyle={{color: '#000'}}/>
   }
 
+  const { text, color } = useContext(HeaderContext);
+
   return (
-    <HeaderContext.Consumer>{(headerCtx) => {
-      const { text, color } = headerCtx.state;
-      const chatBackgroundColor = color;
-      props.navigation.setOptions({title: text});
+    <View style={{flex:1, backgroundColor: color}}>
+      <GiftedChat
+        renderBubble={props => renderBubble(props)}
+        messages={messages}
+        onSend={(messages) => onSend(messages)}
+        user={{
+          _id:1,
+        }}
+        renderDay={(props) => renderDay(props)}
+        renderSystemMessage={(props) => renderSystemMessage(props)}
+      />
       
-      return (
-        <View style={{flex:1, backgroundColor: chatBackgroundColor}}>
-          <GiftedChat
-            renderBubble={props => renderBubble(props)}
-            messages={messages}
-            onSend={(messages) => onSend(messages)}
-            user={{
-              _id:1,
-            }}
-            renderDay={(props) => renderDay(props)}
-            renderSystemMessage={(props) => renderSystemMessage(props)}
-          />
-          
-          { Platform.OS === 'android' ? 
-            <KeyboardAvoidingView behavior="height" /> : 
-            null
-          }
-        </View>
-      )
-    }}    
-    </HeaderContext.Consumer>
+      { Platform.OS === 'android' ? 
+        <KeyboardAvoidingView behavior="height" /> : 
+        null
+      }
+    </View>
   )
 }
 export default Chat;

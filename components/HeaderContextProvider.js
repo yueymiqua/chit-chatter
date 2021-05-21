@@ -1,35 +1,26 @@
-import React, { createContext, Component } from 'react';
+import React, { createContext, useState } from 'react';
 
 const image = require('../assets/Background_Image.png');
 
-export const HeaderContext = createContext();
+export const HeaderContext = createContext({
+  color: '',
+  text: '',
+  changeColor: () => {},
+  changeText: () => {},
+});
 
-class HeaderContextProvider extends Component {
-  constructor(){
-    super();
-    this.state = {
-    text: '',
-    color: '',
-    }
-    this.changeText = this.changeText.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-  }
+const HeaderContextProvider = ({children}) => {
+  const [text, setText] = useState('');
+  const [color, setColor] = useState('');
 
-  changeText(text) {
-   this.setState({text})
-  }
-
-  changeColor(color) {
-    this.setState({color})
-  }
-
-  render() {
-    return (
-      <HeaderContext.Provider value={{state: this.state, changeText: this.changeText, changeColor: this.changeColor}}>
-        { this.props.children }
-      </HeaderContext.Provider>
-    )
-  }
+  const changeColor = (hexCode) => setColor(hexCode);
+  const changeText = (string) => setText(string);
+  
+  return (
+    <HeaderContext.Provider value={{color, text, changeColor, changeText}}>
+      { children }
+    </HeaderContext.Provider>
+  )
 }
 
 
