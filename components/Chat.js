@@ -70,7 +70,6 @@ const Chat = ({navigation}) => {
     return <SystemMessage {...props} textStyle={{color: '#000'}}/>
   }
 
-  // using context from HeaderContextProvider.js
   const { text, color } = useContext(HeaderContext);
 
   return (
